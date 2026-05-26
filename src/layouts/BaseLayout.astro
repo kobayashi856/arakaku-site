@@ -27,17 +27,17 @@ const base = import.meta.env.BASE_URL;
       <div class="flex items-center justify-between h-16">
         <!-- ロゴ -->
         <a href={base} class="flex items-center group">
-          <img src={`${base}arakaku_logo.png`} alt="アラカク" class="h-10 w-auto object-contain" />
+          <img src={`${base}/arakaku_logo.png`} alt="アラカク" class="h-10 w-auto object-contain" />
         </a>
 
         <!-- デスクトップナビ -->
         <nav class="hidden md:flex items-center gap-1">
           <a href={base} class="nav-link">TOP</a>
-          <a href={`${base}about`} class="nav-link">アラカクとは</a>
-          <a href={`${base}history`} class="nav-link">歴史の流れ</a>
-          <a href={`${base}players`} class="nav-link">選手リスト</a>
-          <a href={`${base}maxbout`} class="nav-link">MAXバウト</a>
-          <a href={`${base}news`} class="nav-link">NEWS</a>
+          <a href={`${base}/about`} class="nav-link">アラカクとは</a>
+          <a href={`${base}/history`} class="nav-link">歴史の流れ</a>
+          <a href={`${base}/players`} class="nav-link">選手リスト</a>
+          <a href={`${base}/maxbout`} class="nav-link">MAXバウト</a>
+          <a href={`${base}/news`} class="nav-link">NEWS</a>
         </nav>
 
         <!-- モバイルメニューボタン -->
@@ -53,11 +53,11 @@ const base = import.meta.env.BASE_URL;
     <div id="mobile-menu" class="hidden md:hidden bg-ak-dark border-t border-gray-700">
       <nav class="flex flex-col px-4 py-2">
         <a href={base} class="mobile-nav-link">TOP</a>
-        <a href={`${base}about`} class="mobile-nav-link">アラカクとは</a>
-        <a href={`${base}history`} class="mobile-nav-link">歴史の流れ</a>
-        <a href={`${base}players`} class="mobile-nav-link">選手リスト</a>
-        <a href={`${base}maxbout`} class="mobile-nav-link">MAXバウト</a>
-        <a href={`${base}news`} class="mobile-nav-link">NEWS</a>
+        <a href={`${base}/about`} class="mobile-nav-link">アラカクとは</a>
+        <a href={`${base}/history`} class="mobile-nav-link">歴史の流れ</a>
+        <a href={`${base}/players`} class="mobile-nav-link">選手リスト</a>
+        <a href={`${base}/maxbout`} class="mobile-nav-link">MAXバウト</a>
+        <a href={`${base}/news`} class="mobile-nav-link">NEWS</a>
       </nav>
     </div>
   </header>

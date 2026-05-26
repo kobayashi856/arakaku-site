@@ -84,7 +84,7 @@ const orgColors: Record<string, string> = {
     <div id="players-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
       {sortedPlayersData.map((player) => (
         <a
-          href={`${base}players/${player.slug}`}
+          href={`${base}/players/${player.slug}`}
           class="player-card block bg-ak-dark rounded-xl border border-gray-700 hover:border-ak-red/60 hover:scale-105 transition-all group"
           data-org={player.organization}
           data-weight={player.weightClass}

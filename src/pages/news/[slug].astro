@@ -28,7 +28,7 @@ const base = import.meta.env.BASE_URL;
     <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
       <a href={base} class="hover:text-white">TOP</a>
       <span>/</span>
-      <a href={`${base}news`} class="hover:text-white">NEWS</a>
+      <a href={`${base}/news`} class="hover:text-white">NEWS</a>
       <span>/</span>
       <span class="truncate">{entry.data.title}</span>
     </nav>
@@ -53,7 +53,7 @@ const base = import.meta.env.BASE_URL;
 
     <!-- 戻るボタン -->
     <div class="mt-10 pt-6 border-t border-gray-700">
-      <a href={`${base}news`} class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
+      <a href={`${base}/news`} class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
         ← NEWSに戻る
       </a>
     </div>

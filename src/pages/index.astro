@@ -11,7 +11,7 @@ const base = import.meta.env.BASE_URL;
 
 const navCards = [
   {
-    href: `${base}about`,
+    href: `${base}/about`,
     icon: '📖',
     title: 'アラカクとは',
     desc: '世界観・ルール・三大団体の解説',
@@ -19,7 +19,7 @@ const navCards = [
     border: 'border-blue-700/50',
   },
   {
-    href: `${base}history`,
+    href: `${base}/history`,
     icon: '🕰️',
     title: '歴史の流れ',
     desc: '1996年から現在までの年表',
@@ -27,7 +27,7 @@ const navCards = [
     border: 'border-yellow-700/50',
   },
   {
-    href: `${base}players`,
+    href: `${base}/players`,
     icon: '🥊',
     title: '選手リスト',
     desc: '団体・階級別に選手を検索',
@@ -35,7 +35,7 @@ const navCards = [
     border: 'border-red-700/50',
   },
   {
-    href: `${base}maxbout`,
+    href: `${base}/maxbout`,
     icon: '🏆',
     title: 'MAXバウト',
     desc: 'トーナメント記録・歴代優勝者',
@@ -43,7 +43,7 @@ const navCards = [
     border: 'border-purple-700/50',
   },
   {
-    href: `${base}news`,
+    href: `${base}/news`,
     icon: '📰',
     title: 'アラカクNEWS',
     desc: '最新情報・お知らせ',
@@ -70,7 +70,7 @@ const lastUpdated = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDat
       </div>
 
       <h1 class="mb-4">
-        <img src={`${base}arakaku_logo.png`} alt="アラカク" class="h-24 md:h-36 w-auto object-contain mx-auto" />
+        <img src={`${base}/arakaku_logo.png`} alt="アラカク" class="h-24 md:h-36 w-auto object-contain mx-auto" />
       </h1>
       <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
         お笑いコンビ「クロコップ」の荒木好之が<br />
@@ -78,11 +78,11 @@ const lastUpdated = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDat
         1996年の誕生から現在まで、すべての記録がここに。
       </p>
       <div class="flex flex-wrap gap-4 justify-center">
-        <a href={`${base}about`}
+        <a href={`${base}/about`}
           class="bg-ak-red hover:bg-ak-accent text-white font-bold px-8 py-3 rounded-lg transition-colors text-lg">
           アラカクとは？
         </a>
-        <a href={`${base}players`}
+        <a href={`${base}/players`}
           class="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-3 rounded-lg transition-colors text-lg border border-white/20">
           選手を見る
         </a>
@@ -115,13 +115,13 @@ const lastUpdated = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDat
       <h2 class="text-2xl font-black text-white">
         <span class="text-ak-red">■</span> 最新NEWS
       </h2>
-      <a href={`${base}news`} class="text-ak-red hover:text-ak-accent text-sm font-medium transition-colors">
+      <a href={`${base}/news`} class="text-ak-red hover:text-ak-accent text-sm font-medium transition-colors">
         すべて見る →
       </a>
     </div>
     <div class="space-y-3">
       {latestNews.map((item) => (
-        <a href={`${base}news/${item.slug}`}
+        <a href={`${base}/news/${item.slug}`}
           class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-ak-dark rounded-lg hover:bg-white/5 transition-colors group">
           <div class="flex items-center gap-3 shrink-0">
             <span class="text-ak-silver text-sm font-mono">{item.data.date}</span>

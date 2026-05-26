@@ -33,7 +33,7 @@ const base = import.meta.env.BASE_URL;
     <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
       <a href={base} class="hover:text-white">TOP</a>
       <span>/</span>
-      <a href={`${base}players`} class="hover:text-white">選手リスト</a>
+      <a href={`${base}/players`} class="hover:text-white">選手リスト</a>
       <span>/</span>
       <span>{player.name}</span>
     </nav>
@@ -172,7 +172,7 @@ const base = import.meta.env.BASE_URL;
     </div>
 
     <!-- 戻るボタン -->
-    <a href={`${base}players`} class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
+    <a href={`${base}/players`} class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
       ← 選手リストに戻る
     </a>
   </div>
