@@ -8,6 +8,7 @@ export interface Props {
 }
 
 const { title, description, breadcrumb } = Astro.props;
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title={title} description={description}>
@@ -15,7 +16,7 @@ const { title, description, breadcrumb } = Astro.props;
     <!-- パンくず -->
     {breadcrumb && (
       <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
-        <a href="/" class="hover:text-white transition-colors">TOP</a>
+        <a href={base} class="hover:text-white transition-colors">TOP</a>
         {breadcrumb.map((item) => (
           <>
             <span>/</span>

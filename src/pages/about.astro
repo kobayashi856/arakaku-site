@@ -1,11 +1,12 @@
 ---
 import ArticleLayout from '../layouts/ArticleLayout.astro';
+const base = import.meta.env.BASE_URL;
 ---
 
 <ArticleLayout
   title="アラカクとは"
   description="アラカクの世界観・ルール・三大団体について"
-  breadcrumb={[{ label: 'アラカクとは', href: '/about' }]}
+  breadcrumb={[{ label: 'アラカクとは', href: `${base}about` }]}
 >
 
   <section class="mb-12">
@@ -102,19 +103,19 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
 
   <div class="grid md:grid-cols-3 gap-4 my-8 not-prose">
     <!-- ターゲット -->
-    <a href="/players?org=ターゲット"
+    <a href={`${base}players?org=ターゲット`}
       class="bg-gradient-to-br from-blue-900/40 to-blue-800/20 border border-blue-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
       <div class="text-xl font-black text-blue-400">ターゲット</div>
     </a>
 
     <!-- エンペラー -->
-    <a href="/players?org=エンペラー"
+    <a href={`${base}players?org=エンペラー`}
       class="bg-gradient-to-br from-purple-900/40 to-purple-800/20 border border-purple-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
       <div class="text-xl font-black text-purple-400">エンペラー</div>
     </a>
 
     <!-- マウンテンヒーローズ -->
-    <a href="/players?org=マウンテンヒーローズ"
+    <a href={`${base}players?org=マウンテンヒーローズ`}
       class="bg-gradient-to-br from-red-900/40 to-red-800/20 border border-red-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
       <div class="text-xl font-black text-red-400 whitespace-nowrap">マウンテンヒーローズ</div>
     </a>
@@ -124,7 +125,7 @@ import ArticleLayout from '../layouts/ArticleLayout.astro';
   <p>
     アラカク最大の祭典が<strong>MAXバウト</strong>です。各階級のトップ選手が参加するトーナメント形式の大会で、
     優勝者には「アラカク最強」の称号が与えられます。
-    <a href="/maxbout" class="text-ak-red hover:text-ak-accent transition-colors">→ MAXバウト記録を見る</a>
+    <a href={`${base}maxbout`} class="text-ak-red hover:text-ak-accent transition-colors">→ MAXバウト記録を見る</a>
   </p>
 
 </ArticleLayout>

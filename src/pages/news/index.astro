@@ -13,13 +13,14 @@ const categoryColors: Record<string, string> = {
   '選手情報': 'bg-blue-900/50 text-blue-300 border-blue-700/50',
   'お知らせ': 'bg-gray-700/50 text-gray-300 border-gray-600/50',
 };
+const base = import.meta.env.BASE_URL;
 ---
 
 <BaseLayout title="アラカクNEWS" description="アラカク最新情報・お知らせ">
   <div class="max-w-4xl mx-auto px-4 py-8">
     <!-- パンくず -->
     <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
-      <a href="/" class="hover:text-white">TOP</a>
+      <a href={base} class="hover:text-white">TOP</a>
       <span>/</span>
       <span>NEWS</span>
     </nav>
@@ -30,7 +31,7 @@ const categoryColors: Record<string, string> = {
     <div class="space-y-4">
       {sortedNews.map((item) => (
         <a
-          href={`/news/${item.slug}`}
+          href={`${base}news/${item.slug}`}
           class="block bg-ak-dark rounded-xl border border-gray-700 p-5 hover:border-ak-red/50 hover:bg-white/5 transition-all group"
         >
           <div class="flex flex-wrap items-center gap-3 mb-2">
