@@ -1,0 +1,101 @@
+---
+export interface Props {
+  title: string;
+  description?: string;
+}
+
+const { title, description = 'アラカク - 荒木好之の脳内格闘技界' } = Astro.props;
+---
+
+<!DOCTYPE html>
+<html lang="ja">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <meta name="description" content={description} />
+  <title>{title} | アラカク</title>
+  <link rel="preconnect" href="https://fonts.googleapis.com" />
+  <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+  <link href="https://fonts.googleapis.com/css2?family=Noto+Sans+JP:wght@400;500;700;900&display=swap" rel="stylesheet" />
+</head>
+<body class="bg-ak-darker text-white font-body min-h-screen flex flex-col overflow-x-hidden">
+
+  <!-- ヘッダー -->
+  <header class="bg-ak-dark border-b-2 border-ak-red sticky top-0 z-50">
+    <div class="max-w-6xl mx-auto px-4">
+      <div class="flex items-center justify-between h-16">
+        <!-- ロゴ -->
+        <a href="/" class="flex items-center group">
+          <img src="/arakaku_logo.png" alt="アラカク" class="h-10 w-auto object-contain" />
+        </a>
+
+        <!-- デスクトップナビ -->
+        <nav class="hidden md:flex items-center gap-1">
+          <a href="/" class="nav-link">TOP</a>
+          <a href="/about" class="nav-link">アラカクとは</a>
+          <a href="/history" class="nav-link">歴史の流れ</a>
+          <a href="/players" class="nav-link">選手リスト</a>
+          <a href="/maxbout" class="nav-link">MAXバウト</a>
+          <a href="/news" class="nav-link">NEWS</a>
+        </nav>
+
+        <!-- モバイルメニューボタン -->
+        <button id="menu-btn" class="md:hidden p-2 text-ak-silver hover:text-white" aria-label="メニュー">
+          <svg class="w-6 h-6" fill="none" stroke="currentColor" viewBox="0 0 24 24">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M4 6h16M4 12h16M4 18h16"/>
+          </svg>
+        </button>
+      </div>
+    </div>
+
+    <!-- モバイルメニュー -->
+    <div id="mobile-menu" class="hidden md:hidden bg-ak-dark border-t border-gray-700">
+      <nav class="flex flex-col px-4 py-2">
+        <a href="/" class="mobile-nav-link">TOP</a>
+        <a href="/about" class="mobile-nav-link">アラカクとは</a>
+        <a href="/history" class="mobile-nav-link">歴史の流れ</a>
+        <a href="/players" class="mobile-nav-link">選手リスト</a>
+        <a href="/maxbout" class="mobile-nav-link">MAXバウト</a>
+        <a href="/news" class="mobile-nav-link">NEWS</a>
+      </nav>
+    </div>
+  </header>
+
+  <!-- メインコンテンツ -->
+  <main class="flex-1">
+    <slot />
+  </main>
+
+  <!-- フッター -->
+  <footer class="bg-ak-dark border-t border-gray-800 mt-16">
+    <div class="max-w-6xl mx-auto px-4 py-8">
+      <div class="flex flex-col md:flex-row items-center justify-between gap-4">
+        <div class="text-center md:text-left">
+          <div class="font-black text-xl text-white">アラカク</div>
+          <div class="text-ak-silver text-sm mt-1">荒木好之の脳内格闘技界 公式情報サイト</div>
+        </div>
+        <div class="text-ak-silver text-sm text-center">
+          <p>© アラカク / お笑いコンビ「クロコップ」荒木好之</p>
+        </div>
+      </div>
+    </div>
+  </footer>
+
+  <style>
+    .nav-link {
+      @apply px-3 py-2 text-sm font-medium text-ak-silver hover:text-white hover:bg-white/10 rounded transition-colors;
+    }
+    .mobile-nav-link {
+      @apply py-3 text-base font-medium text-ak-silver hover:text-white border-b border-gray-700 last:border-0 transition-colors;
+    }
+  </style>
+
+  <script>
+    const menuBtn = document.getElementById('menu-btn');
+    const mobileMenu = document.getElementById('mobile-menu');
+    menuBtn?.addEventListener('click', () => {
+      mobileMenu?.classList.toggle('hidden');
+    });
+  </script>
+</body>
+</html>

@@ -1,0 +1,231 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import tournamentsData from '../data/tournaments.json';
+
+function getMethodColor(method: string): string {
+  if (method.includes('KO') || method.includes('TKO')) return 'text-red-400';
+  if (method.includes('判定')) return 'text-blue-400';
+  if (method.includes('一本')) return 'text-yellow-400';
+  return 'text-gray-400';
+}
+
+function groupRounds(bracket: typeof tournamentsData[0]['bracket']) {
+  const reversed = [...bracket].reverse();
+  const result: Array<{ type: 'single' | 'pair'; rounds: typeof bracket }> = [];
+  let i = 0;
+  while (i < reversed.length) {
+    const cur = reversed[i];
+    const nxt = reversed[i + 1];
+    if (cur.round.includes('2回戦') && nxt?.round.includes('2回戦')) {
+      result.push({ type: 'pair', rounds: [cur, nxt].sort((a, b) => a.round < b.round ? -1 : 1) });
+      i += 2;
+    } else if (cur.round.includes('1回戦') && nxt?.round.includes('1回戦')) {
+      const sorted = [cur, nxt].sort((a, b) => a.round < b.round ? -1 : 1);
+      result.push({ type: 'single', rounds: [sorted[0]] });
+      result.push({ type: 'single', rounds: [sorted[1]] });
+      i += 2;
+    } else {
+      result.push({ type: 'single', rounds: [cur] });
+      i++;
+    }
+  }
+  return result;
+}
+---
+
+<BaseLayout title="MAXバウト記録" description="アラカク最大のトーナメント「MAXバウト」の全大会記録">
+  <div class="max-w-5xl mx-auto px-4 py-8">
+    <!-- パンくず -->
+    <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
+      <a href="/" class="hover:text-white">TOP</a>
+      <span>/</span>
+      <span>MAXバウト</span>
+    </nav>
+
+    <!-- タイトル -->
+    <div class="text-center mb-12">
+      <div class="inline-flex items-center gap-3 mb-4">
+        <div class="h-0.5 w-12 bg-ak-gold"></div>
+        <span class="text-ak-gold text-sm font-bold tracking-widest">ARAKAKU GRAND TOURNAMENT</span>
+        <div class="h-0.5 w-12 bg-ak-gold"></div>
+      </div>
+      <h1 class="text-5xl md:text-6xl font-black text-white mb-2">MAXバウト</h1>
+      <p class="text-gray-400">アラカク最大のトーナメント大会</p>
+    </div>
+
+    <!-- 歴代チャンピオン一覧 -->
+    <div class="mb-12">
+      <h2 class="text-2xl font-black text-white mb-6 text-center">
+        <span class="text-ak-gold">🏆</span> 歴代チャンピオン
+      </h2>
+      <div class="grid sm:grid-cols-2 lg:grid-cols-3 gap-4">
+        {tournamentsData.map((t) => (
+          <div class="bg-gradient-to-br from-yellow-900/30 to-yellow-800/10 border border-yellow-700/40 rounded-xl p-5 text-center">
+            <div class="text-ak-gold font-mono text-sm mb-1">{t.date.slice(0, 4)}年</div>
+            <div class="text-lg font-black text-white mb-1">{t.name}</div>
+            <div class="text-ak-gold font-black text-2xl mb-1">🏆</div>
+            <div class="text-2xl font-black text-white">{t.champion}</div>
+            <div class="text-gray-400 text-sm mt-2">
+              準優勝：{t.runnerUp}
+            </div>
+          </div>
+        ))}
+      </div>
+    </div>
+
+    <!-- 各大会のトーナメント表 -->
+    {tournamentsData.map((tournament) => (
+      <div class="mb-12">
+        <!-- 大会名 -->
+        <div class="flex items-center gap-4 mb-6">
+          <div class="h-0.5 flex-1 bg-gray-700"></div>
+          <h2 class="text-2xl font-black text-white whitespace-nowrap">{tournament.name}</h2>
+          <div class="h-0.5 flex-1 bg-gray-700"></div>
+        </div>
+
+        <!-- 動画 -->
+        {tournament.videoId && (
+          <div class="md:w-1/2 md:mx-auto mb-4">
+            <div class="aspect-video rounded-xl overflow-hidden">
+              <iframe
+                class="w-full h-full"
+                src={`https://www.youtube.com/embed/${tournament.videoId}`}
+                title="YouTube video player"
+                frameborder="0"
+                allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share"
+                referrerpolicy="strict-origin-when-cross-origin"
+                allowfullscreen
+              ></iframe>
+            </div>
+          </div>
+        )}
+
+        <!-- 日付 -->
+        <div class="flex items-center gap-4 flex-wrap justify-center mb-6">
+          <span class="text-gray-400 text-sm">{tournament.date.slice(0, 4)}年</span>
+        </div>
+
+        <!-- トーナメントブラケット -->
+        <div class="space-y-8">
+          {groupRounds(tournament.bracket).map((group) => (
+            group.type === 'pair' ? (
+              /* 2回戦A・B：左右グリッド、各ブロック内もグリッド */
+              <div class="grid grid-cols-1 md:grid-cols-2 gap-6">
+                {group.rounds.map((round) => (
+                  <div>
+                    <h3 class="text-ak-gold font-bold text-sm mb-3 text-center uppercase tracking-widest">
+                      {round.round}
+                    </h3>
+                    <div class="grid grid-cols-1 sm:grid-cols-2 gap-3">
+                      {round.matches.map((match) => (
+                        <div class="bg-ak-dark border border-gray-700 rounded-xl overflow-hidden">
+                          <div class={`px-4 py-3 flex items-center justify-between border-b border-gray-700 ${match.winner === match.fighter1 ? 'bg-green-900/20' : ''}`}>
+                            <span class={`font-bold text-sm ${match.winner === match.fighter1 ? 'text-white' : 'text-gray-500'}`}>
+                              {match.fighter1}
+                            </span>
+                            {match.winner === match.fighter1 && (
+                              <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                                {match.method} ✓
+                              </span>
+                            )}
+                          </div>
+                          <div class={`px-4 py-3 flex items-center justify-between ${match.winner === match.fighter2 ? 'bg-green-900/20' : ''}`}>
+                            <span class={`font-bold text-sm ${match.winner === match.fighter2 ? 'text-white' : 'text-gray-500'}`}>
+                              {match.fighter2}
+                            </span>
+                            {match.winner === match.fighter2 && (
+                              <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                                {match.method} ✓
+                              </span>
+                            )}
+                          </div>
+                        </div>
+                      ))}
+                    </div>
+                  </div>
+                ))}
+              </div>
+            ) : (
+              /* 通常ラウンド：試合数に応じたグリッド */
+              <div>
+                <h3 class="text-ak-gold font-bold text-sm mb-3 text-center uppercase tracking-widest">
+                  {group.rounds[0].round}
+                </h3>
+                {group.rounds[0].matches.length === 1 ? (
+                  /* 決勝：カード1枚を中央寄せ */
+                  <div class="max-w-sm mx-auto">
+                    {group.rounds[0].matches.map((match) => (
+                      <div class="bg-ak-dark border border-gray-700 rounded-xl overflow-hidden">
+                        <div class={`px-4 py-3 flex items-center justify-between border-b border-gray-700 ${match.winner === match.fighter1 ? 'bg-green-900/20' : ''}`}>
+                          <span class={`font-bold text-sm ${match.winner === match.fighter1 ? 'text-white' : 'text-gray-500'}`}>
+                            {match.fighter1}
+                          </span>
+                          {match.winner === match.fighter1 && (
+                            <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                              {match.method} ✓
+                            </span>
+                          )}
+                        </div>
+                        <div class={`px-4 py-3 flex items-center justify-between ${match.winner === match.fighter2 ? 'bg-green-900/20' : ''}`}>
+                          <span class={`font-bold text-sm ${match.winner === match.fighter2 ? 'text-white' : 'text-gray-500'}`}>
+                            {match.fighter2}
+                          </span>
+                          {match.winner === match.fighter2 && (
+                            <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                              {match.method} ✓
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                ) : (
+                  <div class={
+                    group.rounds[0].matches.length === 2
+                      ? 'grid grid-cols-1 sm:grid-cols-2 gap-3 max-w-2xl mx-auto'
+                      : 'grid grid-cols-1 sm:grid-cols-2 xl:grid-cols-4 gap-3'
+                  }>
+                    {group.rounds[0].matches.map((match) => (
+                      <div class="bg-ak-dark border border-gray-700 rounded-xl overflow-hidden">
+                        <div class={`px-4 py-3 flex items-center justify-between border-b border-gray-700 ${match.winner === match.fighter1 ? 'bg-green-900/20' : ''}`}>
+                          <span class={`font-bold text-sm ${match.winner === match.fighter1 ? 'text-white' : 'text-gray-500'}`}>
+                            {match.fighter1}
+                          </span>
+                          {match.winner === match.fighter1 && (
+                            <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                              {match.method} ✓
+                            </span>
+                          )}
+                        </div>
+                        <div class={`px-4 py-3 flex items-center justify-between ${match.winner === match.fighter2 ? 'bg-green-900/20' : ''}`}>
+                          <span class={`font-bold text-sm ${match.winner === match.fighter2 ? 'text-white' : 'text-gray-500'}`}>
+                            {match.fighter2}
+                          </span>
+                          {match.winner === match.fighter2 && (
+                            <span class={`text-xs font-black shrink-0 ml-2 ${getMethodColor(match.method)}`}>
+                              {match.method} ✓
+                            </span>
+                          )}
+                        </div>
+                      </div>
+                    ))}
+                  </div>
+                )}
+              </div>
+            )
+          ))}
+        </div>
+
+      </div>
+    ))}
+
+    <!-- 追加方法 -->
+    <div class="p-6 bg-ak-dark rounded-xl border border-gray-700">
+      <h3 class="text-white font-bold mb-2">📝 大会記録の追加方法</h3>
+      <p class="text-gray-400 text-sm">
+        トーナメントデータは <code class="text-ak-gold bg-gray-800 px-1 rounded">src/data/tournaments.json</code> で管理しています。
+        新しい大会を追加する場合はこのファイルに追記してください。
+      </p>
+    </div>
+  </div>
+</BaseLayout>

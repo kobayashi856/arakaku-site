@@ -1,0 +1,74 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+export async function getStaticPaths() {
+  const newsEntries = await getCollection('news');
+  return newsEntries.map((entry) => ({
+    params: { slug: entry.slug },
+    props: { entry },
+  }));
+}
+
+const { entry } = Astro.props;
+const { Content } = await entry.render();
+
+const categoryColors: Record<string, string> = {
+  '試合結果': 'bg-red-900/50 text-red-300 border-red-700/50',
+  '大会情報': 'bg-purple-900/50 text-purple-300 border-purple-700/50',
+  '選手情報': 'bg-blue-900/50 text-blue-300 border-blue-700/50',
+  'お知らせ': 'bg-gray-700/50 text-gray-300 border-gray-600/50',
+};
+---
+
+<BaseLayout title={entry.data.title} description={entry.data.summary}>
+  <div class="max-w-3xl mx-auto px-4 py-8">
+    <!-- パンくず -->
+    <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
+      <a href="/" class="hover:text-white">TOP</a>
+      <span>/</span>
+      <a href="/news" class="hover:text-white">NEWS</a>
+      <span>/</span>
+      <span class="truncate">{entry.data.title}</span>
+    </nav>
+
+    <!-- 記事ヘッダー -->
+    <div class="mb-8">
+      <div class="flex flex-wrap items-center gap-3 mb-4">
+        <span class="text-gray-500 font-mono text-sm">{entry.data.date}</span>
+        <span class={`text-xs font-bold px-2 py-0.5 rounded border ${categoryColors[entry.data.category] ?? 'bg-gray-700/50 text-gray-300 border-gray-600/50'}`}>
+          {entry.data.category}
+        </span>
+      </div>
+      <h1 class="text-3xl md:text-4xl font-black text-white border-l-4 border-ak-red pl-4">
+        {entry.data.title}
+      </h1>
+    </div>
+
+    <!-- 記事本文 -->
+    <div class="prose-ak">
+      <Content />
+    </div>
+
+    <!-- 戻るボタン -->
+    <div class="mt-10 pt-6 border-t border-gray-700">
+      <a href="/news" class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
+        ← NEWSに戻る
+      </a>
+    </div>
+  </div>
+
+  <style is:global>
+    .prose-ak h1 { @apply text-3xl font-black text-white mt-8 mb-4 border-l-4 border-ak-red pl-4; }
+    .prose-ak h2 { @apply text-2xl font-bold text-white mt-10 mb-4 pb-2 border-b border-gray-700; }
+    .prose-ak h3 { @apply text-xl font-bold text-ak-gold mt-6 mb-3; }
+    .prose-ak p { @apply text-gray-300 leading-relaxed mb-4; }
+    .prose-ak ul { @apply list-disc list-inside text-gray-300 mb-4 space-y-1; }
+    .prose-ak ol { @apply list-decimal list-inside text-gray-300 mb-4 space-y-1; }
+    .prose-ak li { @apply text-gray-300; }
+    .prose-ak strong { @apply text-white font-bold; }
+    .prose-ak a { @apply text-ak-red hover:text-ak-accent underline transition-colors; }
+    .prose-ak code { @apply bg-gray-800 text-ak-gold px-1 py-0.5 rounded text-sm; }
+    .prose-ak blockquote { @apply border-l-4 border-ak-red pl-4 text-gray-400 italic my-4; }
+  </style>
+</BaseLayout>

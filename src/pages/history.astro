@@ -1,0 +1,307 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+---
+
+<BaseLayout title="歴史の流れ" description="アラカク1996年から現在までの歴史年表">
+  <div class="max-w-4xl mx-auto px-4 py-8">
+
+    <!-- パンくず -->
+    <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
+      <a href="/" class="hover:text-white">TOP</a>
+      <span>/</span>
+      <span>歴史の流れ</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-black text-white border-l-4 border-ak-red pl-4 mb-2">歴史の流れ</h1>
+    <p class="text-gray-400 pl-5 mb-10">1996年〜現在</p>
+
+    <!-- 時代凡例 -->
+    <div class="flex flex-wrap gap-2 mb-10">
+      <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-700 text-yellow-100">創世記</span>
+      <span class="text-xs font-bold px-3 py-1 rounded-full bg-ak-gold text-ak-darker">黄金期</span>
+      <span class="text-xs font-bold px-3 py-1 rounded-full bg-orange-700 text-orange-100">転換期</span>
+      <span class="text-xs font-bold px-3 py-1 rounded-full bg-gray-600 text-gray-100">低迷期</span>
+      <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-700 text-blue-100">新世紀</span>
+    </div>
+
+    <!-- タイムライン -->
+    <div class="relative">
+      <div class="absolute left-8 top-0 bottom-0 w-0.5 bg-gray-700 hidden md:block"></div>
+
+      <div class="space-y-10">
+
+        <!-- 1996年〜 創世記 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-yellow-400 whitespace-nowrap">1996年〜</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-yellow-400">1996年〜</div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-yellow-700 text-yellow-100">創世記</span>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-yellow-700/50 transition-colors">
+            <h3 class="text-white font-bold text-lg mb-2">スーパー運動 発足</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-2">
+              多人数参加型のスポーツ複合組織「スーパー運動」が発足。<strong class="text-gray-200">5人1チーム × 12チーム ＝ 60人</strong>の登場人物が画用紙の上で定義された。
+            </p>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              主要種目は「5人制野球」や、近所を激走する「チャリレース」。これら全ての競技を荒木少年が一人で実演し、結果を記録していた。
+            </p>
+          </div>
+        </div>
+
+        <!-- 1998年 創世記 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-yellow-400 whitespace-nowrap">1998年</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-yellow-400">1998年</div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-yellow-700/50 transition-colors">
+              <h3 class="text-white font-bold text-lg mb-2">格闘技の導入</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                現実世界の「K-1」を観て衝撃を受けた荒木少年が、競技に「格闘技」を導入。この頃から他の競技は徐々に衰退し、格闘技団体としてアラカクの基礎が築かれていく。当初はキックボクシングが全盛だった。
+              </p>
+              <div class="pt-3 border-t border-gray-700">
+                <div class="text-xs text-white mb-2">第1世代スター選手</div>
+                <div class="flex flex-wrap gap-2">
+                  {['ガンコ', 'おおたけ', 'ほうさんけ'].map(name => (
+                    <span class="text-sm font-bold text-yellow-300 bg-yellow-900/30 border border-yellow-700/40 px-3 py-1 rounded-lg">{name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <p class="text-white text-sm leading-relaxed px-1">
+              ※この頃から、アラカクの世界は荒木氏の意思とは関係なく勝手に動くようになる。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2000年〜 黄金期 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-ak-gold whitespace-nowrap">2000年〜</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-ak-gold">2000年〜</div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-ak-gold text-ak-darker">黄金期</span>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-ak-gold/50 transition-colors">
+              <h3 class="text-white font-bold text-lg mb-2">MMA（総合格闘技）が基本ルールに</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                現実世界の「プライド」に強い影響を受け、この頃からアラカクでも<strong class="text-gray-200">総合格闘技（MMA）が基本ルール</strong>となる。
+              </p>
+              <div class="pt-3 border-t border-gray-700">
+                <div class="text-xs text-white mb-2">第2世代スター選手</div>
+                <div class="flex flex-wrap gap-2">
+                  {['もちづき', 'せけん', 'すとむ', 'やまと'].map(name => (
+                    <span class="text-sm font-bold text-ak-gold bg-yellow-900/20 border border-yellow-700/40 px-3 py-1 rounded-lg">{name}</span>
+                  ))}
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-yellow-900/20 to-ak-dark rounded-xl p-5 border border-yellow-700/50">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-ak-gold font-black">◎</span>
+                <h3 class="text-ak-gold font-black">強さの階級</h3>
+              </div>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                当時の「スーパー運動」独自の階級ルール。選手の体格に関係なく、強ければ「ヘビー級」、弱ければ「ライト級」といった<strong class="text-white">完全実力主義の階級制度</strong>。このルールのおかげで試合はより熱狂するものとなり、「スーパー運動」は人気を集めた。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2005年ごろ 黄金期 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-ak-gold whitespace-nowrap">2005年ごろ</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-ak-gold">2005年ごろ</div>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-ak-gold/50 transition-colors">
+              <h3 class="text-white font-bold text-lg mb-2">リクター無双時代の到来</h3>
+              <p class="text-gray-400 text-sm leading-relaxed">
+                強豪・リクターが「スーパー運動」に参入。圧倒的な強さで他選手をなぎ倒し、<strong class="text-white">"リクター無双"の時代</strong>が到来。打倒リクターを掲げて、他団体からも猛者達が次々と移籍してくる流れとなり、さらに盛り上がりを見せる。
+              </p>
+            </div>
+            <blockquote class="border-l-4 border-ak-gold pl-5 py-1">
+              <p class="text-gray-300 text-sm">※ 荒木氏曰く「<strong class="text-ak-gold">この頃が一番面白かった</strong>」</p>
+            </blockquote>
+          </div>
+        </div>
+
+        <!-- 2010年ごろ 転換期 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-orange-400 whitespace-nowrap">2010年ごろ</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-orange-400">2010年ごろ</div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-orange-700 text-orange-100">転換期</span>
+          </div>
+          <div class="space-y-4">
+            <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-orange-700/50 transition-colors">
+              <h3 class="text-white font-bold text-lg mb-3">リクターの低迷と「強さの階級」論争</h3>
+              <p class="text-gray-400 text-sm leading-relaxed mb-4">
+                この頃から、リクターの動きが悪くなり戦績も低迷してくる。
+              </p>
+              <div class="space-y-3">
+                <div class="bg-black/20 rounded-lg p-4 border-l-2 border-blue-500">
+                  <div class="text-blue-400 text-xs font-bold mb-1">ドータカンフルの提言</div>
+                  <p class="text-gray-300 text-sm leading-relaxed">リクターの弱体化は、自分よりも体格の大きい選手と戦い続けてきた結果、ダメージが蓄積してきたことが原因。選手を守るためにも「強さの階級」の撤廃を要請。</p>
+                </div>
+                <div class="bg-black/20 rounded-lg p-4 border-l-2 border-red-500">
+                  <div class="text-red-400 text-xs font-bold mb-1">リクターの反論</div>
+                  <p class="text-gray-300 text-sm leading-relaxed">自分がスター選手になれて、団体も大きくなったのは「強さの階級」があったから。撤廃には断固反対。</p>
+                </div>
+              </div>
+            </div>
+            <div class="bg-gradient-to-br from-red-900/20 to-ak-dark rounded-xl p-5 border border-red-700/50">
+              <div class="flex items-center gap-2 mb-3">
+                <span class="text-red-400 font-black">◎</span>
+                <h3 class="text-red-400 font-black">世紀の一戦「リクター VS ドータカンフル」</h3>
+              </div>
+              <p class="text-gray-400 text-sm mb-4">「強さの階級」の存続／撤廃をかけた歴史的一戦が実現。</p>
+              <div class="flex items-center justify-center gap-6 bg-black/30 rounded-lg p-4 mb-4">
+                <div class="text-center">
+                  <div class="text-white font-black text-xl">リクター</div>
+                  <div class="text-gray-400 text-xs mt-1">体重：ミドル級</div>
+                </div>
+                <div class="text-red-400 font-black text-3xl">VS</div>
+                <div class="text-center">
+                  <div class="text-white font-black text-xl">ドータカンフル</div>
+                  <div class="text-gray-400 text-xs mt-1">体重：ヘビー級</div>
+                </div>
+              </div>
+              <p class="text-gray-300 text-sm leading-relaxed">
+                結末は<strong class="text-white">1分足らずでドータカンフルのKO勝利</strong>。「強さの階級」が撤廃され、「体重別階級性」が導入される。
+              </p>
+            </div>
+          </div>
+        </div>
+
+        <!-- 低迷期（年号なし） -->
+        <div class="md:pl-20 relative">
+          <div class="flex items-center gap-3 mb-5">
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-gray-600 text-gray-100">低迷期</span>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700">
+            <h3 class="text-white font-bold text-lg mb-2">スーパー運動の衰退</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              階級制度の改正に伴い、だんだんと選手が離れていく。また、第2世代のスター選手4人やリクターの引退もあり、「スーパー運動」の人気は衰退。
+            </p>
+            <div class="pt-3 border-t border-gray-700">
+              <div class="text-xs text-white mb-2">第3世代スター選手</div>
+              <div class="flex flex-wrap gap-2">
+                {['むらき', 'しんたく', 'まとりだ', 'くにさだ'].map(name => (
+                  <span class="text-sm font-bold text-gray-300 bg-gray-700/50 border border-gray-600/50 px-3 py-1 rounded-lg">{name}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2012年 低迷期 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-gray-400 whitespace-nowrap">2012年</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-gray-400">2012年</div>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700">
+            <h3 class="text-white font-bold text-lg mb-2">「スーパー運動」活動停止・解体</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              第3世代の4人が奮闘するも人気回復には至らず、ついに「スーパー運動」活動停止・解体。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2013年 低迷期 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-gray-400 whitespace-nowrap">2013年</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-gray-400">2013年</div>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700">
+            <h3 class="text-white font-bold text-lg mb-2">新団体「ターゲット」発足</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              第2世代の4人が主体となって動き、新団体「ターゲット」が発足。
+            </p>
+          </div>
+        </div>
+
+        <!-- 2013年〜 新世紀 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-blue-400 whitespace-nowrap">2013年〜</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-blue-400">2013年〜</div>
+            <span class="text-xs font-bold px-3 py-1 rounded-full bg-blue-700 text-blue-100">新世紀</span>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700 hover:border-blue-700/50 transition-colors">
+            <h3 class="text-white font-bold text-lg mb-2">MAXバウトの誕生とメジャー団体制</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              第1世代の3人が中心となり「MAXバウト」を立ち上げる。また、独断で「メジャー団体」を認定し、それ以外の団体を「マイナー団体」とした。
+            </p>
+            <div class="pt-3 border-t border-gray-700">
+              <div class="text-xs text-gray-500 mb-2">初期のメジャー団体</div>
+              <div class="flex flex-wrap gap-2">
+                {['ターゲット', 'ヒーローズ', 'マウンテン', 'エンペラー', 'アライブ'].map(name => (
+                  <span class="text-sm font-bold text-blue-300 bg-blue-900/30 border border-blue-700/40 px-3 py-1 rounded-lg">{name}</span>
+                ))}
+              </div>
+            </div>
+          </div>
+        </div>
+
+        <!-- 2015年 新世紀 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-blue-400 whitespace-nowrap">2015年</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-blue-400">2015年</div>
+          </div>
+          <div class="bg-gradient-to-br from-blue-900/20 to-ak-dark rounded-xl p-5 border border-blue-700/50">
+            <h3 class="text-white font-bold text-lg mb-2">第1回 MAXバウト 開催</h3>
+            <p class="text-gray-400 text-sm leading-relaxed">
+              メジャー団体の中の王者を決める大会、第1回MAXバウト開催。
+            </p>
+          </div>
+        </div>
+
+        <!-- 現在 新世紀 -->
+        <div class="md:pl-20 relative">
+          <div class="hidden md:block absolute left-0 top-1">
+            <div class="text-sm font-black text-blue-400 whitespace-nowrap">現在</div>
+          </div>
+          <div class="flex items-center gap-3 mb-5">
+            <div class="md:hidden text-xl font-black text-blue-400">現在</div>
+          </div>
+          <div class="bg-ak-dark rounded-xl p-5 border border-gray-700">
+            <h3 class="text-white font-bold text-lg mb-3">現在のメジャー団体</h3>
+            <p class="text-gray-400 text-sm leading-relaxed mb-4">
+              3つのメジャー団体が存続し、アラカクの世界は現在も進化し続けている。
+            </p>
+            <div class="flex flex-wrap gap-2">
+              {['ターゲット', 'マウンテン・ヒーローズ', 'エンペラー'].map(name => (
+                <span class="text-sm font-bold text-white bg-white/10 border border-white/20 px-3 py-1 rounded-lg">{name}</span>
+              ))}
+            </div>
+          </div>
+        </div>
+
+      </div>
+    </div>
+  </div>
+</BaseLayout>

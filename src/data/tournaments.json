@@ -1,0 +1,57 @@
+[
+  {
+    "id": "maxbout-7-light",
+    "name": "第7回 MAXバウト ライト級GP",
+    "date": "2024",
+    "videoId": "LK45sJahdK0",
+    "champion": "ブルーワン",
+    "runnerUp": "ランダーデビル",
+    "bracket": [
+      {
+        "round": "1回戦 Aブロック",
+        "matches": [
+          { "fighter1": "ランダーデビル", "fighter2": "キマイラ",           "winner": "ランダーデビル", "method": "1R・KO"  },
+          { "fighter1": "くわしお",       "fighter2": "ブルーワン",         "winner": "ブルーワン",     "method": "1R・KO"  },
+          { "fighter1": "つくりはら",     "fighter2": "ステシエン・チェット","winner": "つくりはら",     "method": "判定3-0" },
+          { "fighter1": "コルト・アプロー","fighter2": "だいな",            "winner": "コルト・アプロー","method": "1R・KO"  }
+        ]
+      },
+      {
+        "round": "1回戦 Bブロック",
+        "matches": [
+          { "fighter1": "イスカン・アステ",    "fighter2": "きたむら",          "winner": "イスカン・アステ",    "method": "3R・KO" },
+          { "fighter1": "マルコ・フレイザー",  "fighter2": "ワインセル",        "winner": "マルコ・フレイザー",  "method": "2R・KO" },
+          { "fighter1": "わく",               "fighter2": "ローリングJr.",     "winner": "ローリングJr.",      "method": "1R・KO" },
+          { "fighter1": "さんごく",           "fighter2": "ダブド・ガブリシャン","winner": "ダブド・ガブリシャン","method": "3R・KO" }
+        ]
+      },
+      {
+        "round": "2回戦 Aブロック",
+        "matches": [
+          { "fighter1": "ランダーデビル", "fighter2": "つくりはら",     "winner": "ランダーデビル", "method": "2R・KO" },
+          { "fighter1": "コルト・アプロー","fighter2": "ブルーワン",    "winner": "ブルーワン",     "method": "1R・KO" }
+        ]
+      },
+      {
+        "round": "2回戦 Bブロック",
+        "matches": [
+          { "fighter1": "イスカン・アステ",   "fighter2": "マルコ・フレイザー",  "winner": "イスカン・アステ",    "method": "2R・KO" },
+          { "fighter1": "ダブド・ガブリシャン","fighter2": "ローリングJr.",      "winner": "ダブド・ガブリシャン","method": "1R・KO" }
+        ]
+      },
+      {
+        "round": "準決勝",
+        "matches": [
+          { "fighter1": "ランダーデビル",     "fighter2": "イスカン・アステ",    "winner": "ランダーデビル",     "method": "1R・KO" },
+          { "fighter1": "ブルーワン",         "fighter2": "ダブド・ガブリシャン","winner": "ブルーワン",         "method": "1R・KO" }
+        ]
+      },
+      {
+        "round": "決勝",
+        "matches": [
+          { "fighter1": "ランダーデビル", "fighter2": "ブルーワン", "winner": "ブルーワン", "method": "2R・KO" }
+        ]
+      }
+    ]
+  }
+]

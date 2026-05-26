@@ -1,0 +1,213 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import playersData from '../../data/players.json';
+
+const sortedPlayersData = [...playersData].sort((a, b) =>
+  a.nameKana.localeCompare(b.nameKana, 'ja')
+);
+
+const organizations = ['ALL', 'ターゲット', 'エンペラー', 'マウンテンヒーローズ'];
+const weightClasses = ['ALL', 'ライト級', 'ミドル級', 'ヘビー級'];
+
+const orgColors: Record<string, string> = {
+  'ターゲット': 'bg-blue-900/50 text-blue-300 border-blue-700/50',
+  'エンペラー': 'bg-purple-900/50 text-purple-300 border-purple-700/50',
+  'マウンテンヒーローズ': 'bg-red-900/50 text-red-300 border-red-700/50',
+};
+---
+
+<BaseLayout title="選手リスト" description="アラカク全選手一覧。団体・階級でフィルタリング可能">
+  <div class="max-w-6xl mx-auto px-4 py-8">
+    <!-- パンくず -->
+    <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
+      <a href="/" class="hover:text-white">TOP</a>
+      <span>/</span>
+      <span>選手リスト</span>
+    </nav>
+
+    <h1 class="text-3xl md:text-4xl font-black text-white border-l-4 border-ak-red pl-4 mb-8">選手リスト</h1>
+
+    <!-- フィルター -->
+    <div class="bg-ak-dark rounded-xl p-6 border border-gray-700 mb-8">
+      <div class="grid sm:grid-cols-2 gap-6">
+        <!-- 団体フィルター -->
+        <div>
+          <label class="text-ak-gold font-bold text-sm mb-3 block">団体</label>
+          <div class="flex flex-wrap gap-2" id="org-filters">
+            {organizations.map((org) => (
+              <button
+                data-filter="org"
+                data-value={org}
+                class={`filter-btn px-3 py-1.5 rounded-lg text-sm font-bold border transition-all ${
+                  org === 'ALL'
+                    ? 'bg-ak-red text-white border-ak-red active'
+                    : 'bg-transparent text-gray-400 border-gray-600 hover:border-gray-400'
+                }`}
+              >
+                {org}
+              </button>
+            ))}
+          </div>
+        </div>
+
+        <!-- 階級フィルター -->
+        <div>
+          <label class="text-ak-gold font-bold text-sm mb-3 block">階級</label>
+          <div class="flex flex-wrap gap-2" id="weight-filters">
+            {weightClasses.map((wc) => (
+              <button
+                data-filter="weight"
+                data-value={wc}
+                class={`filter-btn px-3 py-1.5 rounded-lg text-sm font-bold border transition-all ${
+                  wc === 'ALL'
+                    ? 'bg-ak-red text-white border-ak-red active'
+                    : 'bg-transparent text-gray-400 border-gray-600 hover:border-gray-400'
+                }`}
+              >
+                {wc}
+              </button>
+            ))}
+          </div>
+        </div>
+      </div>
+
+      <!-- 結果件数 -->
+      <div class="mt-4 pt-4 border-t border-gray-700">
+        <span id="result-count" class="text-gray-400 text-sm">
+          {sortedPlayersData.length}名の選手
+        </span>
+      </div>
+    </div>
+
+    <!-- 選手カードグリッド -->
+    <div id="players-grid" class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {sortedPlayersData.map((player) => (
+        <a
+          href={`/players/${player.slug}`}
+          class="player-card block bg-ak-dark rounded-xl border border-gray-700 hover:border-ak-red/60 hover:scale-105 transition-all group"
+          data-org={player.organization}
+          data-weight={player.weightClass}
+        >
+          <div class="p-5">
+            <!-- 団体バッジ -->
+            <div class="flex items-center justify-between mb-3">
+              <span class={`text-xs font-black px-2 py-0.5 rounded border ${orgColors[player.organization] ?? 'bg-gray-700 text-gray-300 border-gray-600'}`}>
+                {player.organization}
+              </span>
+              <span class="text-xs text-gray-500">{player.weightClass}</span>
+            </div>
+
+            <!-- 選手名 -->
+            <h2 class="text-xl font-black text-white group-hover:text-ak-gold transition-colors mb-0.5">
+              {player.name}
+            </h2>
+            {player.nickname && (
+              <div class="text-ak-red text-sm font-bold mb-3">「{player.nickname}」</div>
+            )}
+
+            <!-- 戦績 -->
+            <div class="mt-3 pt-3 border-t border-gray-700">
+              <div class="text-xs text-gray-500 mb-2">メジャー戦績</div>
+              <div class="flex items-center gap-4">
+                <div class="text-center">
+                  <div class="text-xl font-black text-green-400">{player.wins}</div>
+                  <div class="text-xs text-gray-500">勝</div>
+                </div>
+                <div class="text-gray-600">-</div>
+                <div class="text-center">
+                  <div class="text-xl font-black text-red-400">{player.losses}</div>
+                  <div class="text-xs text-gray-500">敗</div>
+                </div>
+              </div>
+            </div>
+          </div>
+        </a>
+      ))}
+    </div>
+
+    <!-- 0件時メッセージ -->
+    <div id="no-results" class="hidden text-center py-16">
+      <div class="text-4xl mb-4">🔍</div>
+      <p class="text-gray-400">該当する選手が見つかりませんでした</p>
+    </div>
+
+    <!-- 追加方法の説明 -->
+    <div class="mt-12 p-6 bg-ak-dark rounded-xl border border-gray-700">
+      <h3 class="text-white font-bold mb-2">📝 選手の追加方法</h3>
+      <p class="text-gray-400 text-sm">
+        選手データは <code class="text-ak-gold bg-gray-800 px-1 rounded">src/data/players.json</code> で管理しています。
+        JSONファイルに選手データを追記するだけで、自動的にリストに表示されます。
+      </p>
+    </div>
+  </div>
+
+  <script>
+    const params = new URLSearchParams(window.location.search);
+    let activeOrg = params.get('org') ?? 'ALL';
+    let activeWeight = params.get('weight') ?? 'ALL';
+
+    // URLパラメータに応じてボタンの初期状態を更新
+    if (activeOrg !== 'ALL') {
+      document.querySelectorAll<HTMLButtonElement>('.filter-btn[data-filter="org"]').forEach((b) => {
+        if (b.dataset.value === activeOrg) {
+          b.classList.add('bg-ak-red', 'text-white', 'border-ak-red');
+          b.classList.remove('bg-transparent', 'text-gray-400', 'border-gray-600');
+        } else {
+          b.classList.remove('bg-ak-red', 'text-white', 'border-ak-red');
+          b.classList.add('bg-transparent', 'text-gray-400', 'border-gray-600');
+        }
+      });
+    }
+
+    function updateFilter() {
+      const cards = document.querySelectorAll<HTMLElement>('.player-card');
+      let count = 0;
+
+      cards.forEach((card) => {
+        const org = card.dataset.org ?? '';
+        const weight = card.dataset.weight ?? '';
+
+        const matchOrg = activeOrg === 'ALL' || org === activeOrg;
+        const matchWeight = activeWeight === 'ALL' || weight === activeWeight;
+
+        if (matchOrg && matchWeight) {
+          card.style.display = '';
+          count++;
+        } else {
+          card.style.display = 'none';
+        }
+      });
+
+      const countEl = document.getElementById('result-count');
+      if (countEl) countEl.textContent = `${count}名の選手`;
+
+      const noResults = document.getElementById('no-results');
+      if (noResults) noResults.classList.toggle('hidden', count > 0);
+    }
+
+    document.querySelectorAll<HTMLButtonElement>('.filter-btn').forEach((btn) => {
+      btn.addEventListener('click', () => {
+        const filterType = btn.dataset.filter;
+        const value = btn.dataset.value ?? '';
+
+        // 同じグループのボタンをリセット
+        document.querySelectorAll<HTMLButtonElement>(`.filter-btn[data-filter="${filterType}"]`).forEach((b) => {
+          b.classList.remove('bg-ak-red', 'text-white', 'border-ak-red', 'active');
+          b.classList.add('bg-transparent', 'text-gray-400', 'border-gray-600');
+        });
+
+        // 選択したボタンをアクティブ化
+        btn.classList.add('bg-ak-red', 'text-white', 'border-ak-red', 'active');
+        btn.classList.remove('bg-transparent', 'text-gray-400', 'border-gray-600');
+
+        if (filterType === 'org') activeOrg = value;
+        if (filterType === 'weight') activeWeight = value;
+
+        updateFilter();
+      });
+    });
+
+    // 初期表示時にフィルターを適用
+    updateFilter();
+  </script>
+</BaseLayout>

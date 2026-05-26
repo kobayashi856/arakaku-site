@@ -1,0 +1,178 @@
+---
+import BaseLayout from '../../layouts/BaseLayout.astro';
+import playersData from '../../data/players.json';
+import matchesData from '../../data/matches.json';
+
+export async function getStaticPaths() {
+  return playersData.map((player) => ({
+    params: { slug: player.slug },
+    props: { player },
+  }));
+}
+
+const { player } = Astro.props;
+
+// この選手が出場した試合を取得
+const playerMatches = matchesData.filter(
+  (m) => m.fighter1 === player.name || m.fighter2 === player.name
+);
+
+const orgColors: Record<string, string> = {
+  'ターゲット': 'from-blue-900/40 to-blue-800/20 border-blue-700/50 text-blue-400',
+  'エンペラー': 'from-purple-900/40 to-purple-800/20 border-purple-700/50 text-purple-400',
+  'マウンテンヒーローズ': 'from-red-900/40 to-red-800/20 border-red-700/50 text-red-400',
+};
+
+const orgStyle = orgColors[player.organization] ?? 'from-gray-900/40 to-gray-800/20 border-gray-700/50 text-gray-400';
+---
+
+<BaseLayout title={player.name} description={`${player.name}の選手プロフィール・戦績`}>
+  <div class="max-w-4xl mx-auto px-4 py-8">
+    <!-- パンくず -->
+    <nav class="flex items-center gap-2 text-sm text-ak-silver mb-6">
+      <a href="/" class="hover:text-white">TOP</a>
+      <span>/</span>
+      <a href="/players" class="hover:text-white">選手リスト</a>
+      <span>/</span>
+      <span>{player.name}</span>
+    </nav>
+
+    <!-- 選手ヘッダー -->
+    <div class={`bg-gradient-to-br ${orgStyle.split(' ').slice(0,2).join(' ')} border ${orgStyle.split(' ')[2]} rounded-2xl p-6 md:p-8 mb-8`}>
+      <div class="flex flex-col md:flex-row md:items-start gap-6">
+        <!-- アイコン -->
+        <div class={`w-24 h-24 rounded-2xl bg-gradient-to-br ${orgStyle.split(' ').slice(0,2).join(' ')} border-2 ${orgStyle.split(' ')[2]} flex items-center justify-center text-4xl font-black ${orgStyle.split(' ')[3]} shrink-0`}>
+          {player.name[0]}
+        </div>
+
+        <div class="flex-1">
+          <!-- 団体バッジ -->
+          <div class="flex items-center gap-3 mb-2">
+            <span class={`text-sm font-black px-3 py-1 rounded-lg bg-white/10 border ${orgStyle.split(' ')[2]} ${orgStyle.split(' ')[3]}`}>
+              {player.organization}
+            </span>
+            <span class="text-gray-400 text-sm">{player.weightClass}</span>
+          </div>
+
+          <h1 class="text-4xl md:text-5xl font-black text-white mb-1">{player.name}</h1>
+          {player.nickname && (
+            <div class="text-ak-red font-bold text-lg">「{player.nickname}」</div>
+          )}
+        </div>
+
+        <!-- 戦績ボックス -->
+        <div class="bg-black/30 rounded-xl p-4 text-center min-w-[140px] border border-white/10">
+          <div class="text-xs text-gray-500 mb-2">メジャー戦績</div>
+          <div class="flex items-center justify-center gap-3 mb-2">
+            <div>
+              <div class="text-3xl font-black text-green-400">{player.wins}</div>
+              <div class="text-xs text-gray-400">勝</div>
+            </div>
+            <div class="text-gray-600 text-xl">-</div>
+            <div>
+              <div class="text-3xl font-black text-red-400">{player.losses}</div>
+              <div class="text-xs text-gray-400">敗</div>
+            </div>
+          </div>
+          <div class="text-xs text-gray-500">
+            勝率 {player.wins + player.losses > 0
+              ? Math.round(player.wins / (player.wins + player.losses) * 100)
+              : 0}%
+          </div>
+        </div>
+      </div>
+    </div>
+
+    <div class="grid md:grid-cols-2 gap-6 mb-8">
+      <!-- プロフィール -->
+      <div class="bg-ak-dark rounded-xl border border-gray-700 p-6">
+        <h2 class="text-lg font-black text-white mb-4 pb-2 border-b border-gray-700">プロフィール</h2>
+        <dl class="space-y-3">
+          <div class="flex gap-4">
+            <dt class="text-gray-500 text-sm w-24 shrink-0">国籍</dt>
+            <dd class="text-white text-sm">{player.nationality ?? '不明'}</dd>
+          </div>
+          {player.age && (
+            <div class="flex gap-4">
+              <dt class="text-gray-500 text-sm w-24 shrink-0">年齢</dt>
+              <dd class="text-white text-sm">{player.age}歳</dd>
+            </div>
+          )}
+          {player.height && (
+            <div class="flex gap-4">
+              <dt class="text-gray-500 text-sm w-24 shrink-0">身長</dt>
+              <dd class="text-white text-sm">{player.height}cm</dd>
+            </div>
+          )}
+          <div class="flex gap-4">
+            <dt class="text-gray-500 text-sm w-24 shrink-0">所属団体</dt>
+            <dd class={`text-sm font-bold ${orgStyle.split(' ')[3]}`}>{player.organization}</dd>
+          </div>
+          {player.gym && (
+            <div class="flex gap-4">
+              <dt class="text-gray-500 text-sm w-24 shrink-0">所属ジム</dt>
+              <dd class="text-white text-sm">{player.gym}</dd>
+            </div>
+          )}
+          <div class="flex gap-4">
+            <dt class="text-gray-500 text-sm w-24 shrink-0">階級</dt>
+            <dd class="text-white text-sm">{player.weightClass}</dd>
+          </div>
+        </dl>
+      </div>
+
+      <!-- 選手メモ -->
+      <div class="bg-ak-dark rounded-xl border border-gray-700 p-6">
+        <h2 class="text-lg font-black text-white mb-4 pb-2 border-b border-gray-700">選手メモ</h2>
+        <p class="text-gray-300 text-sm leading-relaxed">{player.bio}</p>
+      </div>
+    </div>
+
+    <!-- 出場試合 -->
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-6 mb-8">
+      <h2 class="text-lg font-black text-white mb-4 pb-2 border-b border-gray-700">試合記録</h2>
+      {playerMatches.length > 0 ? (
+        <div class="overflow-x-auto">
+          <table class="w-full text-sm">
+            <thead>
+              <tr class="text-gray-500 text-xs border-b border-gray-700">
+                <th class="text-left pb-3 pr-4">日付</th>
+                <th class="text-left pb-3 pr-4">大会</th>
+                <th class="text-left pb-3 pr-4">対戦相手</th>
+                <th class="text-left pb-3 pr-4">結果</th>
+                <th class="text-left pb-3">決着</th>
+              </tr>
+            </thead>
+            <tbody class="divide-y divide-gray-800">
+              {playerMatches.map((match) => {
+                const isF1 = match.fighter1 === player.name;
+                const opponent = isF1 ? match.fighter2 : match.fighter1;
+                const win = match.result.includes(player.name);
+                return (
+                  <tr class="hover:bg-white/5">
+                    <td class="py-3 pr-4 text-gray-400 font-mono">{match.date}</td>
+                    <td class="py-3 pr-4 text-gray-300">{match.event}</td>
+                    <td class="py-3 pr-4 text-white font-bold">{opponent}</td>
+                    <td class="py-3 pr-4">
+                      <span class={`font-black text-xs px-2 py-0.5 rounded ${win ? 'text-green-400 bg-green-900/30' : 'text-red-400 bg-red-900/30'}`}>
+                        {win ? '勝' : '敗'}
+                      </span>
+                    </td>
+                    <td class="py-3 text-gray-400">{match.method}</td>
+                  </tr>
+                );
+              })}
+            </tbody>
+          </table>
+        </div>
+      ) : (
+        <p class="text-gray-500 text-sm">記録なし</p>
+      )}
+    </div>
+
+    <!-- 戻るボタン -->
+    <a href="/players" class="inline-flex items-center gap-2 text-ak-silver hover:text-white transition-colors">
+      ← 選手リストに戻る
+    </a>
+  </div>
+</BaseLayout>

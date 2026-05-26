@@ -1,0 +1,58 @@
+[
+  {
+    "id": "match-001",
+    "event": "アラカク グランプリ Vol.1",
+    "date": "1995-07-15",
+    "fighter1": "荒木好之",
+    "fighter2": "デーモンキング",
+    "result": "荒木好之 判定勝利",
+    "method": "判定（3-0）",
+    "round": "5R",
+    "weightClass": "ヘビー級",
+    "youtubeUrl": "",
+    "youtubeId": "",
+    "notes": "アラカク史上初の公式試合"
+  },
+  {
+    "id": "match-002",
+    "event": "MAXバウト 第1回",
+    "date": "1997-12-01",
+    "fighter1": "荒木好之",
+    "fighter2": "タイガー中村",
+    "result": "荒木好之 KO勝利",
+    "method": "KO（右ストレート）",
+    "round": "3R 2:45",
+    "weightClass": "ヘビー級",
+    "youtubeUrl": "",
+    "youtubeId": "",
+    "notes": "第1回MAXバウト決勝"
+  },
+  {
+    "id": "match-003",
+    "event": "アラカク グランプリ Vol.5",
+    "date": "2000-08-20",
+    "fighter1": "ブラックスコーピオン",
+    "fighter2": "タイガー中村",
+    "result": "ブラックスコーピオン 一本勝ち",
+    "method": "スコーピオンロック（絞め）",
+    "round": "2R 4:12",
+    "weightClass": "ウェルター級",
+    "youtubeUrl": "",
+    "youtubeId": "",
+    "notes": "因縁の一戦"
+  },
+  {
+    "id": "match-004",
+    "event": "MAXバウト 第5回",
+    "date": "2005-03-10",
+    "fighter1": "デーモンキング",
+    "fighter2": "アイアンウルフ",
+    "result": "デーモンキング KO勝利",
+    "method": "デーモンクラッシュ",
+    "round": "1R 3:00",
+    "weightClass": "ヘビー級",
+    "youtubeUrl": "",
+    "youtubeId": "",
+    "notes": "衝撃のKO劇"
+  }
+]

@@ -1,0 +1,130 @@
+---
+import ArticleLayout from '../layouts/ArticleLayout.astro';
+---
+
+<ArticleLayout
+  title="アラカクとは"
+  description="アラカクの世界観・ルール・三大団体について"
+  breadcrumb={[{ label: 'アラカクとは', href: '/about' }]}
+>
+
+  <section class="mb-12">
+    <div class="bg-ak-dark rounded-xl p-6 border border-gray-700 mb-8">
+      <p class="text-gray-300 leading-loose text-lg">
+        「アラカク」とは、お笑いコンビ<strong>「クロコップ」の荒木好之</strong>が
+        幼少期から脳内で構築し続けている<strong>架空の格闘技界</strong>です。
+        1996年に誕生し、選手・団体・ルール・試合記録まで独自の世界が緻密に作り上げられています。
+      </p>
+    </div>
+  </section>
+
+  <div class="grid md:grid-cols-2 gap-4 my-8 not-prose">
+    <div class="aspect-video rounded-xl overflow-hidden">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/VDwwo72yU9s?si=n_zhEnzCui0BBfyz" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+    <div class="aspect-video rounded-xl overflow-hidden">
+      <iframe class="w-full h-full" src="https://www.youtube.com/embed/4cccIjMPRHU?si=zFQ1sDcmMAE8QAUZ" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
+    </div>
+  </div>
+
+  <h2>アラカク世界の基礎知識</h2>
+
+  <div class="not-prose space-y-3 my-6">
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-5">
+      <div class="text-ak-gold font-black mb-1">世界線</div>
+      <p class="text-gray-300 text-sm leading-relaxed">アラカクが存在する世界を「1の世界」。我々が暮らすこの世界を「2の世界」とする。1の世界の住人は、自分たちの格闘技界が2の世界で「アラカク」と呼ばれていることを知らない。</p>
+    </div>
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-5">
+      <div class="text-ak-gold font-black mb-1">荒木好之</div>
+      <p class="text-gray-300 text-sm leading-relaxed">アラカクのファン代表であり、アラカクの世界を唯一観測できる人物。自身の体に選手を宿すことで試合を再現し、2の世界の我々にも"アラカク"を見せてくれる。</p>
+    </div>
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-5">
+      <div class="text-ak-gold font-black mb-1">国</div>
+      <p class="text-gray-300 text-sm leading-relaxed">「日本」と「外国」の2つしか存在しない。日本人選手はひらがな、外国人選手はカタカナで表記され、全員が日本語を話す。</p>
+    </div>
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-5">
+      <div class="text-ak-gold font-black mb-1">誕生日</div>
+      <p class="text-gray-300 text-sm leading-relaxed">全選手が荒木と同じ7月15日。この日、同時に全員が1つ歳をとる。</p>
+    </div>
+    <div class="bg-ak-dark rounded-xl border border-gray-700 p-5">
+      <div class="text-ak-gold font-black mb-1">総合格闘技</div>
+      <p class="text-gray-300 text-sm leading-relaxed">2の世界でいうMMA同様に、ダウンがなく、関節技もあり。</p>
+    </div>
+  </div>
+
+  <h2>基本ルール</h2>
+
+  <h3>試合形式</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>項目</th>
+        <th>内容</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr>
+        <td>ラウンド数</td>
+        <td>通常試合：3R / タイトルマッチ：5R</td>
+      </tr>
+      <tr>
+        <td>1ラウンド時間</td>
+        <td>5分</td>
+      </tr>
+      <tr>
+        <td>勝利条件</td>
+        <td>KO・一本（サブミッション）・判定・TKO</td>
+      </tr>
+      <tr>
+        <td>判定基準</td>
+        <td>ダメージ・コントロール・積極性の3項目</td>
+      </tr>
+    </tbody>
+  </table>
+
+  <h3>階級制度</h3>
+  <table>
+    <thead>
+      <tr>
+        <th>階級</th>
+        <th>体重上限</th>
+      </tr>
+    </thead>
+    <tbody>
+      <tr><td>ライト級</td><td>72kg</td></tr>
+      <tr><td>ミドル級</td><td>92kg</td></tr>
+      <tr><td>ヘビー級</td><td>制限なし</td></tr>
+    </tbody>
+  </table>
+
+  <h2>三大団体</h2>
+  <p>アラカクには3つのメジャー団体が存在します。</p>
+
+  <div class="grid md:grid-cols-3 gap-4 my-8 not-prose">
+    <!-- ターゲット -->
+    <a href="/players?org=ターゲット"
+      class="bg-gradient-to-br from-blue-900/40 to-blue-800/20 border border-blue-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
+      <div class="text-xl font-black text-blue-400">ターゲット</div>
+    </a>
+
+    <!-- エンペラー -->
+    <a href="/players?org=エンペラー"
+      class="bg-gradient-to-br from-purple-900/40 to-purple-800/20 border border-purple-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
+      <div class="text-xl font-black text-purple-400">エンペラー</div>
+    </a>
+
+    <!-- マウンテンヒーローズ -->
+    <a href="/players?org=マウンテンヒーローズ"
+      class="bg-gradient-to-br from-red-900/40 to-red-800/20 border border-red-700/50 rounded-xl p-4 flex items-center justify-center hover:brightness-125 transition-all">
+      <div class="text-xl font-black text-red-400 whitespace-nowrap">マウンテンヒーローズ</div>
+    </a>
+  </div>
+
+  <h2>MAXバウトとは</h2>
+  <p>
+    アラカク最大の祭典が<strong>MAXバウト</strong>です。各階級のトップ選手が参加するトーナメント形式の大会で、
+    優勝者には「アラカク最強」の称号が与えられます。
+    <a href="/maxbout" class="text-ak-red hover:text-ak-accent transition-colors">→ MAXバウト記録を見る</a>
+  </p>
+
+</ArticleLayout>

@@ -1,0 +1,141 @@
+---
+import BaseLayout from '../layouts/BaseLayout.astro';
+import { getCollection } from 'astro:content';
+
+const newsEntries = await getCollection('news');
+const latestNews = newsEntries
+  .sort((a, b) => new Date(b.data.date).getTime() - new Date(a.data.date).getTime())
+  .slice(0, 3);
+
+const navCards = [
+  {
+    href: '/about',
+    icon: '📖',
+    title: 'アラカクとは',
+    desc: '世界観・ルール・三大団体の解説',
+    color: 'from-blue-900/50 to-blue-800/30',
+    border: 'border-blue-700/50',
+  },
+  {
+    href: '/history',
+    icon: '🕰️',
+    title: '歴史の流れ',
+    desc: '1996年から現在までの年表',
+    color: 'from-yellow-900/50 to-yellow-800/30',
+    border: 'border-yellow-700/50',
+  },
+  {
+    href: '/players',
+    icon: '🥊',
+    title: '選手リスト',
+    desc: '団体・階級別に選手を検索',
+    color: 'from-red-900/50 to-red-800/30',
+    border: 'border-red-700/50',
+  },
+  {
+    href: '/maxbout',
+    icon: '🏆',
+    title: 'MAXバウト',
+    desc: 'トーナメント記録・歴代優勝者',
+    color: 'from-purple-900/50 to-purple-800/30',
+    border: 'border-purple-700/50',
+  },
+  {
+    href: '/news',
+    icon: '📰',
+    title: 'アラカクNEWS',
+    desc: '最新情報・お知らせ',
+    color: 'from-gray-800/50 to-gray-700/30',
+    border: 'border-gray-600/50',
+  },
+];
+
+const now = new Date();
+const lastUpdated = `${now.getFullYear()}年${now.getMonth() + 1}月${now.getDate()}日`;
+---
+
+<BaseLayout title="TOP" description="荒木好之の脳内格闘技界「アラカク」公式情報サイト">
+
+  <!-- ヒーローセクション -->
+  <section class="relative overflow-hidden bg-gradient-to-b from-ak-dark to-ak-darker">
+    <div class="absolute inset-0 opacity-10"
+      style="background-image: repeating-linear-gradient(0deg, transparent, transparent 40px, rgba(192,57,43,0.3) 40px, rgba(192,57,43,0.3) 41px), repeating-linear-gradient(90deg, transparent, transparent 40px, rgba(192,57,43,0.3) 40px, rgba(192,57,43,0.3) 41px);">
+    </div>
+
+    <div class="relative max-w-6xl mx-auto px-4 py-20 md:py-32 text-center">
+      <div class="text-ak-silver text-sm mb-4">
+        最終更新日：{lastUpdated}
+      </div>
+
+      <h1 class="mb-4">
+        <img src="/arakaku_logo.png" alt="アラカク" class="h-24 md:h-36 w-auto object-contain mx-auto" />
+      </h1>
+      <p class="text-gray-300 text-lg max-w-2xl mx-auto leading-relaxed mb-10">
+        お笑いコンビ「クロコップ」の荒木好之が<br />
+        幼少期から脳内で構築し続ける架空の格闘技界。<br />
+        1996年の誕生から現在まで、すべての記録がここに。
+      </p>
+      <div class="flex flex-wrap gap-4 justify-center">
+        <a href="/about"
+          class="bg-ak-red hover:bg-ak-accent text-white font-bold px-8 py-3 rounded-lg transition-colors text-lg">
+          アラカクとは？
+        </a>
+        <a href="/players"
+          class="bg-white/10 hover:bg-white/20 text-white font-bold px-8 py-3 rounded-lg transition-colors text-lg border border-white/20">
+          選手を見る
+        </a>
+      </div>
+    </div>
+  </section>
+
+  <!-- ナビゲーションカード -->
+  <section class="max-w-6xl mx-auto px-4 py-16">
+    <h2 class="text-2xl font-black text-white mb-8 text-center">
+      <span class="text-ak-red">━</span> コンテンツ一覧 <span class="text-ak-red">━</span>
+    </h2>
+    <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
+      {navCards.map((card) => (
+        <a href={card.href}
+          class={`block p-6 rounded-xl bg-gradient-to-br ${card.color} border ${card.border} hover:scale-105 transition-transform group`}>
+          <div class="text-3xl mb-3">{card.icon}</div>
+          <h3 class="text-xl font-black text-white mb-1 group-hover:text-ak-gold transition-colors">
+            {card.title}
+          </h3>
+          <p class="text-gray-400 text-sm">{card.desc}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+  <!-- 最新NEWS -->
+  <section class="max-w-6xl mx-auto px-4 pb-16">
+    <div class="flex items-center justify-between mb-6">
+      <h2 class="text-2xl font-black text-white">
+        <span class="text-ak-red">■</span> 最新NEWS
+      </h2>
+      <a href="/news" class="text-ak-red hover:text-ak-accent text-sm font-medium transition-colors">
+        すべて見る →
+      </a>
+    </div>
+    <div class="space-y-3">
+      {latestNews.map((item) => (
+        <a href={`/news/${item.slug}`}
+          class="flex flex-col sm:flex-row sm:items-center gap-2 sm:gap-4 p-4 bg-ak-dark rounded-lg hover:bg-white/5 transition-colors group">
+          <div class="flex items-center gap-3 shrink-0">
+            <span class="text-ak-silver text-sm font-mono">{item.data.date}</span>
+            <span class={`text-xs font-bold px-2 py-0.5 rounded ${
+              item.data.category === '試合結果' ? 'bg-red-900/50 text-red-300 border border-red-700/50' :
+              item.data.category === '大会情報' ? 'bg-purple-900/50 text-purple-300 border border-purple-700/50' :
+              item.data.category === '選手情報' ? 'bg-blue-900/50 text-blue-300 border border-blue-700/50' :
+              'bg-gray-700/50 text-gray-300 border border-gray-600/50'
+            }`}>
+              {item.data.category}
+            </span>
+          </div>
+          <p class="text-white font-medium group-hover:text-ak-gold transition-colors">{item.data.title}</p>
+        </a>
+      ))}
+    </div>
+  </section>
+
+</BaseLayout>
