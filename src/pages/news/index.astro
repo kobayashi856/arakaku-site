@@ -29,6 +29,9 @@ const base = import.meta.env.BASE_URL;
 
     <!-- ニュース一覧 -->
     <div class="space-y-4">
+      <div class="block bg-ak-dark rounded-xl border border-ak-red/30 p-5">
+        <p class="text-white font-medium">対戦カード・試合結果の最新情報は<a href="https://note.com/xyz1090" target="_blank" rel="noopener noreferrer" class="text-ak-red hover:text-ak-accent underline transition-colors">アラカク通信のーと</a>でチェック！</p>
+      </div>
       {sortedNews.map((item) => (
         <a
           href={`${base}/news/${item.slug}`}

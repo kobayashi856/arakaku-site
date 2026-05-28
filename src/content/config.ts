@@ -5,7 +5,7 @@ const news = defineCollection({
   schema: z.object({
     title: z.string(),
     date: z.string(),
-    category: z.enum(['試合結果', 'お知らせ', '選手情報', '大会情報']),
+    category: z.enum(['試合結果', 'お知らせ', '選手情報', '大会情報', 'ライブ情報']),
     summary: z.string(),
   }),
 });
