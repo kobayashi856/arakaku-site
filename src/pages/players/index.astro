@@ -2,9 +2,19 @@
 import BaseLayout from '../../layouts/BaseLayout.astro';
 import playersData from '../../data/players.json';
 
-const sortedPlayersData = [...playersData].sort((a, b) =>
-  a.nameKana.localeCompare(b.nameKana, 'ja')
-);
+function toSortKey(nameKana: string): string {
+  return nameKana
+    .replace(/・/g, '').replace(/\./g, '').replace(/ /g, '')
+    .replace(/ー/g, '')
+    .replace(/ゔ/g, 'ば')
+    .replace(/[ぁぃぅぇぉっゃゅょ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 1));
+}
+
+const sortedPlayersData = [...playersData].sort((a, b) => {
+  const ka = toSortKey(a.nameKana || a.name);
+  const kb = toSortKey(b.nameKana || b.name);
+  return ka < kb ? -1 : ka > kb ? 1 : 0;
+});
 
 const organizations = ['ALL', 'ターゲット', 'エンペラー', 'マウンテンヒーローズ'];
 const weightClasses = ['ALL', 'ライト級', 'ミドル級', 'ヘビー級'];

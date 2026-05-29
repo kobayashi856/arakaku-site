@@ -61,26 +61,6 @@ const base = import.meta.env.BASE_URL;
           )}
         </div>
 
-        <!-- 戦績ボックス -->
-        <div class="bg-black/30 rounded-xl p-4 text-center min-w-[140px] border border-white/10">
-          <div class="text-xs text-gray-500 mb-2">メジャー戦績</div>
-          <div class="flex items-center justify-center gap-3 mb-2">
-            <div>
-              <div class="text-3xl font-black text-green-400">{player.wins}</div>
-              <div class="text-xs text-gray-400">勝</div>
-            </div>
-            <div class="text-gray-600 text-xl">-</div>
-            <div>
-              <div class="text-3xl font-black text-red-400">{player.losses}</div>
-              <div class="text-xs text-gray-400">敗</div>
-            </div>
-          </div>
-          <div class="text-xs text-gray-500">
-            勝率 {player.wins + player.losses > 0
-              ? Math.round(player.wins / (player.wins + player.losses) * 100)
-              : 0}%
-          </div>
-        </div>
       </div>
     </div>
 
@@ -106,7 +86,7 @@ const base = import.meta.env.BASE_URL;
             </div>
           )}
           <div class="flex gap-4">
-            <dt class="text-gray-500 text-sm w-24 shrink-0">所属団体</dt>
+            <dt class="text-gray-500 text-sm w-24 shrink-0">主戦団体</dt>
             <dd class={`text-sm font-bold ${orgStyle.split(' ')[3]}`}>{player.organization}</dd>
           </div>
           {player.gym && (
@@ -132,6 +112,32 @@ const base = import.meta.env.BASE_URL;
     <!-- 出場試合 -->
     <div class="bg-ak-dark rounded-xl border border-gray-700 p-6 mb-8">
       <h2 class="text-lg font-black text-white mb-4 pb-2 border-b border-gray-700">試合記録</h2>
+
+      <!-- 戦績サマリー -->
+      <div class="flex flex-wrap gap-3 mb-6">
+        <div class="bg-black/30 rounded-lg px-4 py-3 border border-gray-700/50 flex items-center gap-4">
+          <span class="text-xs text-gray-500">メジャー戦績</span>
+          <div class="flex items-center gap-2">
+            <span class="text-2xl font-black text-green-400">{player.wins}</span>
+            <span class="text-xs text-gray-400">勝</span>
+            <span class="text-gray-600 mx-0.5">—</span>
+            <span class="text-2xl font-black text-red-400">{player.losses}</span>
+            <span class="text-xs text-gray-400">敗</span>
+            <span class="text-xs text-gray-500 ml-2">
+              勝率{player.wins + player.losses > 0
+                ? Math.round(player.wins / (player.wins + player.losses) * 100)
+                : 0}%
+            </span>
+          </div>
+        </div>
+        {(player as any).maxBoutRecord && (
+          <div class="bg-black/30 rounded-lg px-4 py-3 border border-gray-700/50 flex items-center gap-3">
+            <span class="text-xs text-gray-500">MAXバウト出場記録</span>
+            <span class="text-sm font-bold text-yellow-400">{(player as any).maxBoutRecord}</span>
+          </div>
+        )}
+      </div>
+
       {playerMatches.length > 0 ? (
         <div class="overflow-x-auto">
           <table class="w-full text-sm">
