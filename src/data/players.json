@@ -123,7 +123,7 @@
     "debut": "",
     "nationality": "外国",
     "gym": "チームカーリン",
-    "bio": "",
+    "bio": "コールズミドル級王者／MMA戦績16勝5敗／エリートスピリッツミドル級トーナメント出場",
     "slug": "andi-zamesu"
   },
   {
@@ -178,7 +178,7 @@
     "debut": "",
     "nationality": "外国",
     "gym": "チームセイバー",
-    "bio": "エリートスピリッツミドル級GP準優勝",
+    "bio": "エリートスピリッツミドル級GP準優勝／MMA戦績5勝1敗(ネオマーキーズ3勝、エリートスピリッツ2勝1敗)",
     "slug": "esu-garion"
   },
   {
@@ -218,6 +218,25 @@
     "slug": "owada-saberu"
   },
   {
+    "id": "otosawa",
+    "name": "おとさわ",
+    "nameKana": "おとさわ",
+    "nickname": "日本ミドル級グラップリングのエース",
+    "organization": "ターゲット",
+    "weightClass": "ミドル級",
+    "age": 35,
+    "height": 183,
+    "wins": 23,
+    "losses": 17,
+    "draws": 0,
+    "debut": "",
+    "nationality": "日本",
+    "gym": "ゴッサブジャパン",
+    "bio": "第3回MAXバウトミドル級GP準優勝",
+    "slug": "otosawa",
+    "maxBoutRecord": "第5回"
+  },
+  {
     "id": "ooshuudeemon",
     "name": "オーシューデーモン",
     "nameKana": "おーしゅーでーもん",
@@ -254,25 +273,6 @@
     "slug": "oshu-wairudo"
   },
   {
-    "id": "otosawa",
-    "name": "おとさわ",
-    "nameKana": "おとさわ",
-    "nickname": "日本ミドル級グラップリングのエース",
-    "organization": "ターゲット",
-    "weightClass": "ミドル級",
-    "age": 35,
-    "height": 183,
-    "wins": 23,
-    "losses": 17,
-    "draws": 0,
-    "debut": "",
-    "nationality": "日本",
-    "gym": "ゴッサブジャパン",
-    "bio": "第3回MAXバウトミドル級GP準優勝",
-    "slug": "otosawa",
-    "maxBoutRecord": "第5回"
-  },
-  {
     "id": "orora-debiru",
     "name": "オーロラデビル",
     "nameKana": "おーろらー・でびる",
@@ -287,7 +287,7 @@
     "debut": "",
     "nationality": "外国",
     "gym": "デビル軍",
-    "bio": "エリートスピリッツミドル級GP優勝",
+    "bio": "エリートスピリッツミドル級GP優勝／バトルモード5勝0敗",
     "slug": "orora-debiru"
   },
   {
@@ -305,7 +305,7 @@
     "debut": "",
     "nationality": "日本",
     "gym": "日本MMAチーム",
-    "bio": "現ジャパンファイトミドル級王者／エリートスピリッツミドル級トーナメント出場",
+    "bio": "現ジャパンファイトミドル級王者／エリートスピリッツミドル級トーナメント出場／MMA戦績11勝3敗",
     "slug": "kazeno"
   },
   {
@@ -378,7 +378,7 @@
     "debut": "",
     "nationality": "日本",
     "gym": "日本柔術協会",
-    "bio": "",
+    "bio": "元アルバトロスライト級王者",
     "slug": "kawakami"
   },
   {
@@ -515,7 +515,7 @@
     "name": "ぎんのすけ",
     "nameKana": "ぎんのすけ",
     "nickname": "",
-    "organization": "",
+    "organization": "ターゲット",
     "weightClass": "ミドル級",
     "age": 28,
     "height": 190,
@@ -525,7 +525,7 @@
     "debut": "",
     "nationality": "日本",
     "gym": "チームやしゃまる",
-    "bio": "",
+    "bio": "マスカット運動ミドル級王者／MMA戦績30勝5敗／エリートスピリッツミドル級トーナメント出場",
     "slug": "ginnosuke"
   },
   {
@@ -599,7 +599,7 @@
     "debut": "",
     "nationality": "日本",
     "gym": "チームジャパン",
-    "bio": "現B1ミドル級王者／エリートスピリッツミドル級トーナメント出場",
+    "bio": "現B1ミドル級王者／MMA戦績8勝0敗（B1）／エリートスピリッツミドル級トーナメント出場",
     "slug": "kodama"
   },
   {
@@ -783,7 +783,7 @@
     "debut": "",
     "nationality": "外国",
     "gym": "チームボークン",
-    "bio": "マイナーではアルバトロスを主戦場とする",
+    "bio": "エリートスピリッツミドル級トーナメント出場／MMA戦績7勝1敗（アルバトロス）",
     "slug": "janimado-tosupachi"
   },
   {
@@ -801,7 +801,7 @@
     "debut": "",
     "nationality": "外国",
     "gym": "サイクロンジム",
-    "bio": "",
+    "bio": "リアルファイトFCランキング1位",
     "slug": "jon-baree",
     "maxBoutRecord": "第6回"
   },
@@ -841,6 +841,24 @@
     "gym": "チームストライン",
     "bio": "MH28,ターゲット91,エンペラー112合同大会／vsアイス・トロン戦にて引退",
     "slug": "sutorain-kaan"
+  },
+  {
+    "id": "supeira",
+    "name": "スペイラ",
+    "nameKana": "すぺいら",
+    "nickname": "",
+    "organization": "ターゲット",
+    "weightClass": "ライト級",
+    "age": 50,
+    "height": 173,
+    "wins": 2,
+    "losses": 2,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "RFチームスペイラ",
+    "bio": "",
+    "slug": "supeira"
   },
   {
     "id": "sumatto-taaui",
@@ -956,24 +974,6 @@
     "maxBoutRecord": "第7回"
   },
   {
-    "id": "datson",
-    "name": "ダートソン",
-    "nameKana": "だーとそん",
-    "nickname": "",
-    "organization": "エンペラー",
-    "weightClass": "ミドル級",
-    "age": 25,
-    "height": 182,
-    "wins": 2,
-    "losses": 4,
-    "draws": 0,
-    "debut": "",
-    "nationality": "外国",
-    "gym": "チーム・ボイス",
-    "bio": "",
-    "slug": "datson"
-  },
-  {
     "id": "dabudo-gaburishan",
     "name": "ダブド・ガブリシャン",
     "nameKana": "だぶど・がぶりしゃん",
@@ -991,6 +991,24 @@
     "bio": "元バイオショットライト級王者",
     "slug": "dabudo-gaburishan",
     "maxBoutRecord": "第7回"
+  },
+  {
+    "id": "datson",
+    "name": "ダートソン",
+    "nameKana": "だーとそん",
+    "nickname": "",
+    "organization": "エンペラー",
+    "weightClass": "ミドル級",
+    "age": 25,
+    "height": 182,
+    "wins": 2,
+    "losses": 4,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "チーム・ボイス",
+    "bio": "",
+    "slug": "datson"
   },
   {
     "id": "charles-burandin",
@@ -1141,24 +1159,6 @@
     "slug": "harisu-orubikku"
   },
   {
-    "id": "van-burukkusu",
-    "name": "ヴァン・ブルックス",
-    "nameKana": "ゔぁん・ぶるっくす",
-    "nickname": "",
-    "organization": "エンペラー",
-    "weightClass": "ミドル級",
-    "age": 29,
-    "height": 192,
-    "wins": 0,
-    "losses": 2,
-    "draws": 0,
-    "debut": "",
-    "nationality": "外国",
-    "gym": "ナックルパート",
-    "bio": "",
-    "slug": "van-burukkusu"
-  },
-  {
     "id": "baison-debiru",
     "name": "バイソンデビル",
     "nameKana": "ばいそんでびる",
@@ -1246,7 +1246,7 @@
     "debut": "",
     "nationality": "日本",
     "gym": "コミックファイト倶楽部",
-    "bio": "",
+    "bio": "エリートスピリッツミドル級トーナメント出場／MMA戦績22勝4敗／コミックファイト21勝4敗／エリートスピリッツ1勝1敗／コミックファイトミドル級W王者(MMAルール、コミックファイトルール)",
     "slug": "paison-hayashi"
   },
   {
@@ -1305,23 +1305,40 @@
     "slug": "bikutoru-nakkaa"
   },
   {
-    "id": "furamu-guran",
-    "name": "フラーム・グラン",
-    "nameKana": "ふらーむ・ぐらん",
-    "nickname": "MADE in コールズ",
+    "id": "biru-jagaa",
+    "name": "ビル・ジャガー",
+    "nameKana": "びる・じゃがー",
+    "nickname": "",
     "organization": "ターゲット",
-    "weightClass": "ライト級",
-    "age": 38,
-    "height": 175,
-    "wins": 18,
+    "weightClass": "ミドル級",
+    "age": 42,
+    "height": 184,
+    "wins": 13,
     "losses": 13,
     "draws": 0,
     "debut": "",
     "nationality": "外国",
-    "gym": "チームドータ",
-    "bio": "元ターゲットライト級8代目王者／第3回ターゲットライト級トーナメント優勝",
-    "slug": "furamu-guran",
-    "maxBoutRecord": "第6回"
+    "gym": "ジャガーグランド",
+    "bio": "",
+    "slug": "biru-jagaa"
+  },
+  {
+    "id": "fan-miiru-seibaa",
+    "name": "ファン・ミール・セイバー",
+    "nameKana": "ふぁん・みーる・せいばー",
+    "nickname": "",
+    "organization": "ターゲット",
+    "weightClass": "ミドル級",
+    "age": 37,
+    "height": 186,
+    "wins": 7,
+    "losses": 8,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "マジシャンズ",
+    "bio": "",
+    "slug": "fan-miiru-seibaa"
   },
   {
     "id": "furanku-dakuta",
@@ -1340,6 +1357,25 @@
     "gym": "ビートダウン",
     "bio": "",
     "slug": "furanku-dakuta"
+  },
+  {
+    "id": "furamu-guran",
+    "name": "フラーム・グラン",
+    "nameKana": "ふらーむ・ぐらん",
+    "nickname": "MADE in コールズ",
+    "organization": "ターゲット",
+    "weightClass": "ライト級",
+    "age": 38,
+    "height": 175,
+    "wins": 18,
+    "losses": 13,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "チームドータ",
+    "bio": "元ターゲットライト級8代目王者／第3回ターゲットライト級トーナメント優勝",
+    "slug": "furamu-guran",
+    "maxBoutRecord": "第6回"
   },
   {
     "id": "burain-jasutaa",
@@ -1783,6 +1819,24 @@
     "slug": "rokkou"
   },
   {
+    "id": "ron",
+    "name": "ロン",
+    "nameKana": "ろん",
+    "nickname": "",
+    "organization": "エンペラー",
+    "weightClass": "ミドル級",
+    "age": 25,
+    "height": 188,
+    "wins": 0,
+    "losses": 1,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "カイザーアスリート",
+    "bio": "",
+    "slug": "ron"
+  },
+  {
     "id": "rolling-jr",
     "name": "ローリングJr",
     "nameKana": "ろーりんぐじゅにあ",
@@ -1800,24 +1854,6 @@
     "bio": "元ネオマーキーズライト級王者／第6.7回MAXバウトライト級トーナメント出場／＊メジャー経験なしによるMAXバウト出場(ライト級第6回)／MH No.38よりミドル級転向／旧キャッチコピー：ネオマーキーズの落雷",
     "slug": "rolling-jr",
     "maxBoutRecord": "第6・7回(L)"
-  },
-  {
-    "id": "ron",
-    "name": "ロン",
-    "nameKana": "ろん",
-    "nickname": "",
-    "organization": "エンペラー",
-    "weightClass": "ミドル級",
-    "age": 25,
-    "height": 188,
-    "wins": 0,
-    "losses": 1,
-    "draws": 0,
-    "debut": "",
-    "nationality": "外国",
-    "gym": "カイザーアスリート",
-    "bio": "",
-    "slug": "ron"
   },
   {
     "id": "wainsel",
@@ -1892,5 +1928,23 @@
     "gym": "ストリートBOX",
     "bio": "元Wボクシング世界ライト級王者／Stand Upライト級トーナメント準優勝",
     "slug": "wanshii-ooferu"
+  },
+  {
+    "id": "van-burukkusu",
+    "name": "ヴァン・ブルックス",
+    "nameKana": "ゔぁん・ぶるっくす",
+    "nickname": "",
+    "organization": "エンペラー",
+    "weightClass": "ミドル級",
+    "age": 29,
+    "height": 192,
+    "wins": 0,
+    "losses": 2,
+    "draws": 0,
+    "debut": "",
+    "nationality": "外国",
+    "gym": "ナックルパート",
+    "bio": "",
+    "slug": "van-burukkusu"
   }
 ]

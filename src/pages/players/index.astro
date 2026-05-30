@@ -3,9 +3,34 @@ import BaseLayout from '../../layouts/BaseLayout.astro';
 import playersData from '../../data/players.json';
 
 function toSortKey(nameKana: string): string {
-  return nameKana
-    .replace(/・/g, '').replace(/\./g, '').replace(/ /g, '')
-    .replace(/ー/g, '')
+  // 各かなの母音（ー の延長先を決めるため）
+  const vowelOf: Record<string, string> = {
+    'あ':'あ','ぁ':'あ','か':'あ','が':'あ','さ':'あ','ざ':'あ','た':'あ','だ':'あ',
+    'な':'あ','は':'あ','ば':'あ','ぱ':'あ','ま':'あ','や':'あ','ゃ':'あ','ら':'あ','わ':'あ',
+    'い':'い','ぃ':'い','き':'い','ぎ':'い','し':'い','じ':'い','ち':'い','ぢ':'い',
+    'に':'い','ひ':'い','び':'い','ぴ':'い','み':'い','り':'い',
+    'う':'う','ぅ':'う','く':'う','ぐ':'う','す':'う','ず':'う','つ':'う','づ':'う',
+    'ぬ':'う','ふ':'う','ぶ':'う','ぷ':'う','む':'う','ゆ':'う','ゅ':'う','る':'う',
+    'え':'え','ぇ':'え','け':'え','げ':'え','せ':'え','ぜ':'え','て':'え','で':'え',
+    'ね':'え','へ':'え','べ':'え','ぺ':'え','め':'え','れ':'え',
+    'お':'お','ぉ':'お','こ':'お','ご':'お','そ':'お','ぞ':'お','と':'お','ど':'お',
+    'の':'お','ほ':'お','ぼ':'お','ぽ':'お','も':'お','よ':'お','ょ':'お','ろ':'お','を':'お',
+  };
+
+  let s = nameKana.replace(/・/g, '').replace(/\./g, '').replace(/ /g, '');
+
+  // ー を直前のかなの母音に置換（例: おー→おお、だー→だあ）
+  let expanded = '';
+  for (const c of s) {
+    if (c === 'ー') {
+      const prev = expanded.length > 0 ? expanded[expanded.length - 1] : '';
+      expanded += vowelOf[prev] ?? '';
+    } else {
+      expanded += c;
+    }
+  }
+
+  return expanded
     .replace(/ゔ/g, 'ば')
     .replace(/[ぁぃぅぇぉっゃゅょ]/g, (c) => String.fromCharCode(c.charCodeAt(0) + 1));
 }
